@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meni Brief · resumé</title>
+<meta name="description" content="resumé of Meni (Menachem) Brief, applied scientist (AI/LLM) and end-to-end builder. RL for LLM tool use at Microsoft; co-founder & technical lead at Simply-Useful. Seattle, WA." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ---------- experience trace (resumé only) ---------- */
+  .trace {
+    list-style: none;
+    border-left: 1px solid var(--line);
+    margin-left: 5px;
+  }
+
+  .step {
+    position: relative;
+    padding: 0 0 44px 30px;
+  }
+
+  .step:last-child { padding-bottom: 4px; }
+
+  .step::before {
+    content: "";
+    position: absolute;
+    left: -5.5px;
+    top: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--pine);
+  }
+
+  .step.now::before {
+    background: var(--pine);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(31, 107, 84, 0.35); }
+    50%      { box-shadow: 0 0 0 7px rgba(31, 107, 84, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .step.now::before { animation: none !important; }
+  }
+
+  .call {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--pine-deep);
+    margin-bottom: 8px;
+  }
+
+  .role-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .role-row h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+  }
+
+  .role-row h3 .org {
+    color: var(--mute);
+    font-weight: 600;
+  }
+
+  .dates {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--mute);
+    white-space: nowrap;
+  }
+
+  .step p {
+    margin-top: 10px;
+    max-width: 62ch;
+    color: var(--ink);
+  }
+
+  .step p + p { margin-top: 8px; }
+
+  /* ---------- research ---------- */
+  .paper {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px 28px;
+  }
+
+  .paper h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    max-width: 28ch;
+  }
+
+  .paper .meta {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--mute);
+    margin-top: 8px;
+  }
+
+  .paper p { margin-top: 12px; max-width: 62ch; }
+
+  .paper .links {
+    margin-top: 16px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  .paper .links a { color: var(--pine-deep); text-underline-offset: 3px; }
+
+  .more-research { margin-top: 22px; display: grid; gap: 12px; }
+
+  .more-research .item { display: flex; gap: 12px; max-width: 66ch; }
+
+  .more-research .tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--pine-deep);
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+
+  /* ---------- skills ---------- */
+  .skills { display: grid; gap: 18px; }
+
+  .skill-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .skill-row dt {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  .skill-row dd { max-width: 66ch; }
+
+  .skill-row dd .sep { color: var(--pine); }
+
+  /* ---------- education ---------- */
+  .edu h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+  }
+
+  .edu .meta {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--mute);
+    margin-top: 6px;
+  }
+
+  .edu p { margin-top: 12px; max-width: 62ch; }
+
+  /* print-only contact line: hidden on screen, shown on paper */
+  .contact-print { display: none; }
+
+  @media (max-width: 620px) {
+    .skill-row { grid-template-columns: 1fr; gap: 4px; }
+    .dates { white-space: normal; }
+    .paper { padding: 22px 20px; }
+  }
+
+  /* ---------- print / save-as-PDF resumé ---------- */
+  @media print {
+    :root {
+      --paper: #fff;
+      --card: #fff;
+      --ink: #111;
+      --mute: #444;
+      --line: #cfd5d0;
+      --pine: #14503f;
+      --pine-deep: #14503f;
+      --pine-tint: transparent;
+    }
+
+    @page { margin: 1.4cm; }
+
+    body {
+      background: #fff;
+      font-size: 10.5pt;
+      line-height: 1.4;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .wrap { max-width: 100%; padding: 0; }
+
+    /* drop interactive + decorative chrome */
+    .top nav,
+    .cta,
+    .js-print,
+    footer .label,
+    footer .big-link,
+    footer .colophon { display: none !important; }
+
+    /* no entrance animation or pulsing dot on paper */
+    .hero > * { animation: none !important; }
+    .step.now::before { animation: none !important; background: var(--pine); }
+
+    /* quiet top bar */
+    .top { padding: 0 0 6px; }
+    .top .wordmark { font-size: 10pt; color: var(--mute); }
+
+    /* header block */
+    .hero { padding: 4px 0 12px; }
+    .eyebrow {
+      text-transform: none;
+      letter-spacing: 0;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 16pt;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    h1 {
+      font-size: 14pt;
+      line-height: 1.15;
+      max-width: none;
+      margin-bottom: 8px;
+    }
+    .lede { font-size: 10.5pt; margin-top: 8px; max-width: none; }
+    .lede em { background: none; font-weight: 600; }
+
+    /* print-only contact line under the header */
+    .contact-print {
+      display: block;
+      font-family: var(--mono);
+      font-size: 9.5pt;
+      color: var(--mute);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+    .contact-print a { color: var(--ink); text-decoration: none; }
+    .contact-print .dot { color: var(--pine); padding: 0 4px; }
+
+    /* sections — tighten, keep each block whole across page breaks */
+    section { padding: 12px 0; break-inside: avoid; }
+    .label { margin-bottom: 12px; font-size: 9pt; }
+
+    .trace { margin-left: 3px; }
+    .step { padding: 0 0 14px 24px; break-inside: avoid; }
+    .call { font-size: 9.5pt; }
+    .role-row h3 { font-size: 12pt; }
+    .dates { font-size: 9pt; }
+    .step p { margin-top: 4px; max-width: none; font-size: 10pt; }
+
+    .paper { padding: 12px 14px; break-inside: avoid; }
+    .paper h3 { font-size: 12pt; }
+    .paper p { margin-top: 6px; max-width: none; font-size: 10pt; }
+    /* surface the reference URLs so the links survive on paper */
+    .paper .links a::after { content: " · " attr(href); color: var(--mute); }
+    .more-research { margin-top: 14px; }
+    .more-research .item { max-width: none; }
+
+    .skills { gap: 10px; }
+    .skill-row dd { max-width: none; }
+
+    .edu p { max-width: none; }
+
+    /* footer — only the "also" note remains (contact moved to the header) */
+    footer { padding: 12px 0 0; break-inside: avoid; }
+    footer .also { font-size: 9.5pt; margin-top: 0; max-width: none; }
+
+    a { color: var(--ink); }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <button type="button" class="wordmark">hello world!</button>
+    <nav aria-label="Site">
+      <a href="index.html">home</a>
+      <a href="resume.html" aria-current="page">resumé</a>
+      <a href="rants.html">rants</a>
+      <a href="work.html">work</a>
+    </nav>
+  </header>
+
+  <section class="hero" style="border-top: none;">
+    <p class="eyebrow">Meni (Menachem) Brief · Applied Scientist, AI/LLM · Seattle, WA</p>
+    <h1>Research question <span class="arrow">→</span> working system.</h1>
+    <p class="lede">
+      Applied scientist and end-to-end builder. 3+ years at Microsoft training and
+      evaluating LLMs, most recently RL for model behavior in complex tool
+      use: agent orchestration and MCP invocation. Then co-founded a startup and
+      shipped a production mobile app as founding engineer and technical lead. I move
+      fast from decision to execution.
+    </p>
+    <div class="cta">
+      <a class="primary js-email-open" data-e="zbp.yvnzt@srveovarz" href="#contact">Email me</a>
+      <a href="https://www.linkedin.com/in/meni-brief/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=t-P-tjgAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+      <a class="js-print" href="#" role="button">Print / Save as PDF</a>
+    </div>
+    <!-- print-only contact header (hidden on screen; email fills in when printing) -->
+    <p class="contact-print">
+      <a class="js-email-reveal" data-e="zbp.yvnzt@srveovarz" href="#">email available on request</a>
+      <span class="dot">·</span> linkedin.com/in/meni-brief
+      <span class="dot">·</span> scholar.google.com/citations?user=t-P-tjgAAAAJ
+      <span class="dot">·</span> semanticscholar.org/author/Meni-Brief/2217252086
+    </p>
+  </section>
+
+  <section id="experience">
+    <p class="label">experience</p>
+    <ol class="trace">
+
+      <li class="step now">
+        <p class="call">ship(mobile_app → app_stores)</p>
+        <div class="role-row">
+          <h3>Co-Founder &amp; Technical Lead <span class="org">· Simply-Useful</span></h3>
+          <span class="dates">Oct 2025 – June 2026</span>
+        </div>
+        <p>
+          Founding engineer of a production-grade, mobile-first productivity app:
+          from zero to live app-store releases with real users, leading a small team
+          I hired. I own the system architecture end to end: Django backend on
+          DigitalOcean, in-app AI processing, two-way sync with Google services,
+          CI/CD on GitHub Actions, product analytics, and error monitoring, all on an
+          AI-native development workflow that keeps a micro team shipping at
+          production velocity.
+        </p>
+      </li>
+
+      <li class="step">
+        <p class="call">simulate(stripe, slack).replay()</p>
+        <div class="role-row">
+          <h3>Agent Evaluation &amp; Simulation <span class="org">· independent project</span></h3>
+          <span class="dates">2026</span>
+        </div>
+        <p>
+          Proof-of-concept eval platform for AI agents: high-fidelity clones of real
+          software platforms (Stripe, Slack) as controlled simulation environments,
+          plus a deterministic capture-and-replay harness for reproducible agent runs.
+        </p>
+      </li>
+
+      <li class="step">
+        <p class="call">rl.improve(tool_use, mcp)</p>
+        <div class="role-row">
+          <h3>Senior Applied Scientist <span class="org">· Microsoft, Industry AI</span></h3>
+          <span class="dates">Jan 2024 – Oct 2025 · Redmond, WA</span>
+        </div>
+        <p>
+          Applied RL to improve LLM behavior in complex tool-use scenarios: agent
+          orchestration and correct invocation of MCP tools. Led applied research on
+          domain adaptation and knowledge injection: data curation, experiment
+          design, training, evaluation, and results communication to internal and
+          external stakeholders. Delivered LLM success stories in healthcare and
+          financial services; co-authored research papers and one patent.
+        </p>
+      </li>
+
+      <li class="step">
+        <p class="call">research(llm.applications)</p>
+        <div class="role-row">
+          <h3>Data &amp; Applied Scientist <span class="org">· Microsoft</span></h3>
+          <span class="dates">Jul 2022 – Jan 2024 · Herzliya, IL</span>
+        </div>
+        <p>
+          Original research on LLM applications and capabilities across industries
+          (PyTorch / Transformers / OpenAI), from experiment design through
+          implementation; improved ML models running in production.
+        </p>
+      </li>
+
+      <li class="step">
+        <p class="call">segment(ultrasound) → fda_cleared</p>
+        <div class="role-row">
+          <h3>Data Science Intern <span class="org">· GE Healthcare</span></h3>
+          <span class="dates">Apr 2021 – Jul 2022</span>
+        </div>
+        <p>
+          Built deep-learning segmentation models for ultrasound imaging; the
+          resulting tool (CNerve) passed FDA requirements for AI in healthcare.
+          Served as data owner and collaborated directly with physicians.
+        </p>
+      </li>
+
+    </ol>
+  </section>
+
+  <section id="research">
+    <p class="label">research</p>
+
+    <article class="paper">
+      <h3>Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs</h3>
+      <p class="meta">co-first author · EMNLP 2024, main conference</p>
+      <p>
+        A systematic comparison of unsupervised fine-tuning and retrieval-augmented
+        generation for injecting knowledge into LLMs, across knowledge-intensive
+        tasks, including entirely new facts models never saw in pre-training.
+      </p>
+      <div class="links">
+        <a href="https://arxiv.org/abs/2312.05934" target="_blank" rel="noopener">arXiv</a>
+        <a href="https://aclanthology.org/2024.emnlp-main.15/" target="_blank" rel="noopener">ACL Anthology</a>
+      </div>
+    </article>
+
+    <div class="more-research">
+      <div class="item">
+        <span class="tag">[patent]</span>
+        <span>One pending patent from applied LLM work at Microsoft.</span>
+      </div>
+      <div class="item">
+        <span class="tag">[thesis]</span>
+        <span>“Diffusion Models: Theory and Mechanisms” (MSc thesis, advised by
+        Prof. Tamir Hazan, Technion).</span>
+      </div>
+      <div class="item">
+        <span class="tag">[more]</span>
+        <span>Additional applied-LLM publications in healthcare and financial
+        services.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="label">skills</p>
+    <dl class="skills">
+      <div class="skill-row">
+        <dt>Research</dt>
+        <dd>LLM post-training &amp; RL for tool use <span class="sep">·</span> agents &amp; MCP
+        <span class="sep">·</span> evaluation design <span class="sep">·</span> domain adaptation
+        <span class="sep">·</span> diffusion models <span class="sep">·</span> PyTorch
+        <span class="sep">·</span> HuggingFace  <span class="sep">·</span> Transformers
+        <span class="sep">·</span> vLLM  <span class="sep">·</span>  Classic ML and data wrangling</dd>
+      </div>
+      <div class="skill-row">
+        <dt>Engineering</dt>
+        <dd>Python (native) <span class="sep">·</span> SQL <span class="sep">·</span> C/C++
+        <span class="sep">·</span> TypeScript <span class="sep">·</span> React Native (iOS + Android)
+        <span class="sep">·</span> Django <span class="sep">·</span> CI/CD (GitHub Actions)
+        <span class="sep">·</span> Docker <span class="sep">·</span> DigitalOcean
+        <span class="sep">·</span> PostHog <span class="sep">·</span> Sentry
+        <span class="sep">·</span> AI-native tooling (Claude Code, Codex)</dd>
+      </div>
+      <div class="skill-row">
+        <dt>Languages</dt>
+        <dd>English &amp; Hebrew (native) <span class="sep">·</span> Spanish (conversational)
+        <span class="sep">·</span> Levantine Arabic (conversational)</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section id="education">
+    <p class="label">education</p>
+    <div class="edu">
+      <h3>Technion – Israel Institute of Technology</h3>
+      <p class="meta">fast-track BSc+MSc honors program</p>
+      <p>
+        MSc in Data Science (GPA 91.4). BSc in Information Systems Engineering,
+        cum laude, #3 in class (GPA 90.6), with minors in Economics and Fintech.
+      </p>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p class="label">contact</p>
+    <a class="big-link js-email-reveal" data-e="zbp.yvnzt@srveovarz" href="#" role="button">Click to reveal email →</a>
+    <p class="also">
+      Also: 1st place at the Bank of Jerusalem &amp; Malam fintech hackathon, and a
+      participant in campus dialogue programs strengthening Arab–Jewish relations.
+    </p>
+    <div class="colophon">
+      <span>© 2026 Meni Brief · Seattle, WA</span>
+      <span>
+        <a href="https://www.linkedin.com/in/meni-brief/" target="_blank" rel="noopener">LinkedIn</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.semanticscholar.org/author/Meni-Brief/2217252086" target="_blank" rel="noopener">Semantic Scholar</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Anti-scraper email: the real address is NEVER in the page source, and is
+  // NOT assembled on load either — only a genuine human click decodes it.
+  // It's stored ROT13'd + reversed in data-e; a bot that just loads the page
+  // (even a headless browser reading the DOM) sees nothing usable.
+  (function () {
+    function reveal(enc) {
+      return enc.split("").reverse().join("").replace(/[a-z]/gi, function (c) {
+        var base = c <= "Z" ? 65 : 97;
+        return String.fromCharCode((c.charCodeAt(0) - base + 13) % 26 + base);
+      });
+    }
+
+    // Hero CTA: address is assembled at click time, then the mail client opens.
+    document.querySelectorAll(".js-email-open").forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = "mailto:" + reveal(el.getAttribute("data-e"));
+      });
+    });
+
+    // Footer / print-contact: first click swaps the placeholder for the real link.
+    document.querySelectorAll(".js-email-reveal").forEach(function (el) {
+      el.addEventListener("click", function revealOnce(e) {
+        e.preventDefault();
+        var addr = reveal(el.getAttribute("data-e"));
+        el.textContent = addr;
+        el.setAttribute("href", "mailto:" + addr);
+        el.dataset.revealed = "1"; // sticky: don't re-hide after printing
+        el.removeEventListener("click", revealOnce);
+      });
+    });
+
+    // Printing is a human action, so it's fine to decode the address for the
+    // printed page. We reveal on beforeprint (covers Cmd+P and the button),
+    // then restore the on-screen placeholder afterward so screens stay clean.
+    function revealForPrint() {
+      document.querySelectorAll(".js-email-reveal").forEach(function (el) {
+        if (el.dataset.revealed) return; // already shown by a click
+        if (el.dataset.printText === undefined) el.dataset.printText = el.textContent;
+        var addr = reveal(el.getAttribute("data-e"));
+        el.textContent = addr;
+        el.setAttribute("href", "mailto:" + addr);
+      });
+      document.querySelectorAll(".js-email-open").forEach(function (el) {
+        if (el.dataset.openHref === undefined) el.dataset.openHref = el.getAttribute("href");
+        el.setAttribute("href", "mailto:" + reveal(el.getAttribute("data-e")));
+      });
+    }
+    function restoreAfterPrint() {
+      document.querySelectorAll(".js-email-reveal").forEach(function (el) {
+        if (el.dataset.revealed || el.dataset.printText === undefined) return;
+        el.textContent = el.dataset.printText;
+        el.setAttribute("href", "#");
+        delete el.dataset.printText;
+      });
+      document.querySelectorAll(".js-email-open").forEach(function (el) {
+        if (el.dataset.openHref === undefined) return;
+        el.setAttribute("href", el.dataset.openHref);
+        delete el.dataset.openHref;
+      });
+    }
+    window.addEventListener("beforeprint", revealForPrint);
+    window.addEventListener("afterprint", restoreAfterPrint);
+
+    // "Print / Save as PDF" button — reveal explicitly (don't rely on the
+    // browser firing beforeprint), print, then restore the on-screen state.
+    document.querySelectorAll(".js-print").forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        e.preventDefault();
+        revealForPrint();
+        window.print();
+        restoreAfterPrint();
+      });
+    });
+  })();
+</script>
+
+<script>
+  // Easter egg: click the "hello world!" wordmark to cycle it through the
+  // canonical first program in a handful of languages. (This page carries its
+  // own copy since it doesn't load the shared script.js.)
+  (function () {
+    var wm = document.querySelector(".wordmark");
+    if (!wm) return;
+    var greetings = [
+      "hello world!",
+      'print("hello world") 💚💚💚',
+      'std::cout << "hello world"; 💚💚',
+      'printf("hello world\\n"); 💚',
+      'console.log("hello world") 💚',
+      'println!("hello world"); 😐',
+      'fmt.Println("hello world") 😒',
+      'puts "hello world" 😒',
+      '<?php echo "hello world"; ?> 🤮'
+    ];
+    var gi = 0;
+    wm.addEventListener("click", function () {
+      gi = (gi + 1) % greetings.length;
+      wm.textContent = greetings[gi];
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      wm.classList.remove("swap");
+      void wm.offsetWidth;
+      wm.classList.add("swap");
+    });
+  })();
+</script>
+
+</body>
+</html>

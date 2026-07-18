@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meni Brief · Work</title>
+<meta name="description" content="Selected work by Meni (Menachem) Brief: Simply-Useful, the task app he's building, and open-source research code from his years at Microsoft." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .section-intro {
+    margin-top: -18px;
+    margin-bottom: 26px;
+    color: var(--mute);
+    max-width: 62ch;
+  }
+  .section-intro a { color: var(--pine-deep); text-underline-offset: 3px; }
+
+  /* ---------- project cards ---------- */
+  .project-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .project {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 26px;
+  }
+
+  .project .k {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--pine-deep);
+  }
+
+  .project h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    margin-top: 8px;
+  }
+
+  .project p { margin-top: 10px; color: var(--ink); max-width: 60ch; }
+
+  .project .links {
+    margin-top: 16px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  .project .links a { color: var(--pine-deep); text-underline-offset: 3px; }
+
+  /* ---------- featured product ---------- */
+  .feature { border-color: #C7D6CC; }
+  .feature h3 { font-size: 27px; margin-top: 10px; }
+
+  .feature .stack {
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--mute);
+    max-width: none;
+  }
+
+  .feature .btns {
+    margin-top: 22px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .feature .btn {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    text-decoration: none;
+    padding: 10px 16px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--ink);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .feature .btn:hover { border-color: var(--pine); background: var(--pine-tint); }
+  .feature .btn.primary { background: var(--pine-deep); border-color: var(--pine-deep); color: #F5FAF7; }
+  .feature .btn.primary:hover { background: var(--pine); border-color: var(--pine); }
+
+  .feature .site {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--mute);
+    text-decoration: none;
+  }
+  .feature .site:hover { color: var(--pine-deep); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <button type="button" class="wordmark">hello world!</button>
+    <nav aria-label="Site">
+      <a href="index.html">home</a>
+      <a href="resume.html">resumé</a>
+      <a href="rants.html">rants</a>
+      <a href="work.html" aria-current="page">work</a>
+    </nav>
+  </header>
+
+  <section class="hero slim" style="border-top: none;">
+    <p class="eyebrow">Selected work</p>
+    <h1>Things (hopefully) worth <span class="arrow">showing</span>.</h1>
+    <p class="lede">
+      I'm too cynical to say that I'm proud of anything, but here are some things that 
+      I have spent significant time on: the product I've been building, and the
+      open-source research code from my years at Microsoft. Every entry links
+      to the real thing.
+    </p>
+  </section>
+
+  <section id="building">
+    <p class="label">building now</p>
+
+    <article class="project feature">
+      <p class="k">founder &amp; technical lead · live in the app stores</p>
+      <h3>Simply-Useful</h3>
+      <p>
+        Task management for ground-level teams: dispatchers, coordinators, and
+        operators. Create a task by voice or text, assign it to anyone (even people
+        who don't have the app), and track status as updates come back by SMS or
+        email. I own the whole system, from the mobile client to the backend.
+      </p>
+      <p class="stack">React Native (iOS + Android) · Django on DigitalOcean · in-app AI · two-way Google sync · CI/CD, analytics, error monitoring</p>
+      <div class="btns">
+        <a class="btn primary" href="https://apps.apple.com/app/simply-useful/id6754860444" target="_blank" rel="noopener">App Store</a>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.simply.useful" target="_blank" rel="noopener">Google Play</a>
+        <a class="btn" href="https://app.simply-useful.com" target="_blank" rel="noopener">Web app</a>
+        <a class="site" href="https://simply-useful.com" target="_blank" rel="noopener">simply-useful.com →</a>
+      </div>
+    </article>
+  </section>
+
+  <section id="open-source">
+    <p class="label">open source · research</p>
+    <p class="section-intro">
+      Code and datasets behind papers I co-authored at Microsoft, released so others
+      can build on them. All on <a href="https://github.com/meniData1" target="_blank" rel="noopener">github.com/meniData1</a>.
+    </p>
+
+    <div class="project-grid">
+
+      <article class="project">
+        <p class="k">EMNLP 2024</p>
+        <h3>Fine-Tuning or Retrieval?</h3>
+        <p>
+          Data and evaluation code from our study comparing unsupervised fine-tuning
+          against retrieval-augmented generation for injecting knowledge into LLMs,
+          including facts a model never saw in pre-training.
+        </p>
+        <div class="links">
+          <a href="https://github.com/meniData1/FT-vs-RAG-data" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://arxiv.org/abs/2312.05934" target="_blank" rel="noopener">arXiv</a>
+          <a href="https://aclanthology.org/2024.emnlp-main.15/" target="_blank" rel="noopener">ACL Anthology</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <p class="k">2025</p>
+        <h3>Knowledge-Instruct</h3>
+        <p>
+          Datasets and scripts for continual pre-training from limited data using
+          instructions: a cheaper way to teach a model new, long-tail knowledge
+          without forgetting what it already knows.
+        </p>
+        <div class="links">
+          <a href="https://github.com/meniData1/knowledge-instruct" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://arxiv.org/abs/2504.05571" target="_blank" rel="noopener">arXiv</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <p class="k">2024</p>
+        <h3>The Cocktail Effect</h3>
+        <p>
+          Training code for our ablation study on how multi-task fine-tuning
+          "cocktails" change LLM performance in domain-specific settings like
+          finance, across dozens of task combinations.
+        </p>
+        <div class="links">
+          <a href="https://github.com/meniData1/cocktail_effect" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://arxiv.org/abs/2410.01109" target="_blank" rel="noopener">arXiv</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <p class="k">2024 · dataset</p>
+        <h3>ReMatch: MIMIC to OMOP</h3>
+        <p>
+          A gold-standard schema mapping between the MIMIC-III and OMOP medical data
+          models, released as a benchmark for retrieval-enhanced schema matching with
+          LLMs in healthcare.
+        </p>
+        <div class="links">
+          <a href="https://github.com/meniData1/MIMIC_2_OMOP" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://arxiv.org/abs/2403.01567" target="_blank" rel="noopener">arXiv</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p class="label">contact</p>
+    <a class="big-link js-email-reveal" data-e="zbp.yvnzt@srveovarz" href="#" role="button">Click to reveal email →</a>
+    <p class="also">
+      Working on something you think I'd find interesting? I'd love to hear about it.
+    </p>
+    <div class="colophon">
+      <span>© 2026 Meni Brief · Seattle, WA</span>
+      <span>
+        <a href="https://github.com/meniData1" target="_blank" rel="noopener">GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/meni-brief/" target="_blank" rel="noopener">LinkedIn</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.semanticscholar.org/author/Meni-Brief/2217252086" target="_blank" rel="noopener">Semantic Scholar</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
